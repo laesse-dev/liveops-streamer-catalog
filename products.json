@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T14:02:24.155Z",
+  "products": [
+    {
+      "sku": "ALICE-BELLE-001",
+      "name": "【10P】ロングセルCO₂パック",
+      "brand": "ALICE BELLE",
+      "category": "スキンケア",
+      "listPriceYen": 12000,
+      "materialUrl": "https://drive.google.com/file/d/1KrL5InXBti4rIsxC2IWVgOCivUhAcYTZ/view?usp=sharing"
+    },
+    {
+      "sku": "ALICE-BELLE-002",
+      "name": "【３P】ロングセルCO₂パック",
+      "brand": "ALICE BELLE",
+      "category": "スキンケア",
+      "listPriceYen": 3900,
+      "materialUrl": "https://drive.google.com/file/d/1KrL5InXBti4rIsxC2IWVgOCivUhAcYTZ/view?usp=sharing"
+    },
+    {
+      "sku": "ALICE-BELLE-003",
+      "name": "セルセレスト",
+      "brand": "ALICE BELLE",
+      "category": "スキンケア",
+      "listPriceYen": 11545,
+      "materialUrl": ""
+    },
+    {
+      "sku": "CHOJU-001",
+      "name": "【30包】choju",
+      "brand": "choju",
+      "category": "健康食品",
+      "listPriceYen": 6164,
+      "materialUrl": "https://drive.google.com/file/d/1bu7dPAvIyydL4VfmzmaPE6jmQ_Dniew-/view?usp=sharing"
+    },
+    {
+      "sku": "HERKIN-001",
+      "name": "Melting Powder Essence",
+      "brand": "HERKIN",
+      "category": "スキンケア",
+      "listPriceYen": 7200,
+      "materialUrl": "https://drive.google.com/file/d/1GFByUTN50g_mCkx9hO-78odW84X-x902/view?usp=sharing"
+    },
+    {
+      "sku": "HERKIN-002",
+      "name": "PDRN Active Serum",
+      "brand": "HERKIN",
+      "category": "スキンケア",
+      "listPriceYen": null,
+      "materialUrl": "https://drive.google.com/file/d/1iDORuByFz72EYdZHRwKRrg_OntsTUeZd/view?usp=sharing"
+    },
+    {
+      "sku": "LIPOCORE-001",
+      "name": "LipoCore（リポコア）",
+      "brand": "LipoCore",
+      "category": "健康食品",
+      "listPriceYen": 8000,
+      "materialUrl": "https://drive.google.com/file/d/1afjmiFrmzvF6J1geqQsIznnfKs1T41a5/view?usp=sharing"
+    },
+    {
+      "sku": "METERA-001",
+      "name": "métera",
+      "brand": "métera",
+      "category": "美容機器",
+      "listPriceYen": 21000,
+      "materialUrl": "https://drive.google.com/file/d/1-KyuL61x7L6yPNRlpZjZ1Kqkd9UaPPMc/view?usp=sharing"
+    },
+    {
+      "sku": "PINK-TONE-001",
+      "name": "WHITE PACK",
+      "brand": "PINK TONE",
+      "category": "スキンケア",
+      "listPriceYen": 5800,
+      "materialUrl": "https://drive.google.com/file/d/1JiMSpM8IUS-P_sEo_a0mLqOSK0m291ws/view?usp=drivesdk"
+    },
+    {
+      "sku": "QUICKTHERA-002",
+      "name": "FULLERENES VC60 SERUM",
+      "brand": "QUICKTHERA",
+      "category": "スキンケア",
+      "listPriceYen": 21900,
+      "materialUrl": "https://drive.google.com/file/d/1YtmXOdVxjXFajErcVIpQ7H__Dtot7e35/view?usp=sharing"
+    },
+    {
+      "sku": "QUICKTHERA-001",
+      "name": "Re:Night Veil Cream",
+      "brand": "QUICKTHERA",
+      "category": "スキンケア",
+      "listPriceYen": 19500,
+      "materialUrl": "https://drive.google.com/file/d/1LFm9efMjPx2F3MYkXoOhUBB-YF-qbTDB/view?usp=sharing"
+    },
+    {
+      "sku": "ZANGMI-001",
+      "name": "ヨンリジクリーム",
+      "brand": "zangmi",
+      "category": "スキンケア",
+      "listPriceYen": 9000,
+      "materialUrl": "https://drive.google.com/file/d/1b_1C10kihedCxutPpqgxMMiakLBD-5vg/view?usp=sharing"
+    }
+  ]
+}
