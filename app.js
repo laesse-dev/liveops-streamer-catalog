@@ -46,9 +46,13 @@ function element(tag, className, text) {
 }
 
 function addOptions(select, values) {
+  const existingValues = new Set(
+    Array.from(select.options, option => option.value)
+  );
   for (const value of [...new Set(values.filter(Boolean))].sort((a, b) =>
     a.localeCompare(b, "ja")
   )) {
+    if (existingValues.has(value)) continue;
     const option = document.createElement("option");
     option.value = value;
     option.textContent = value;
