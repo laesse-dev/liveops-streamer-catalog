@@ -38,6 +38,112 @@ function safePublicUrl(value) {
   }
 }
 
+// Same anonymous, public HTTPS policy as public-products.mjs.
+function isPublicImageHost(hostname) {
+  const host = hostname.toLowerCase();
+  return (
+    Boolean(host) &&
+    host.includes(".") &&
+    !host.endsWith(".") &&
+    !host.startsWith("[") &&
+    !/^\d+\.\d+\.\d+\.\d+$/.test(host) &&
+    !/(^|\.)(localhost|local|internal|test|invalid)$/.test(host)
+  );
+}
+
+function hasPrivateImageQuery(parsed) {
+  const publicKeys = new Set([
+    "w",
+    "h",
+    "width",
+    "height",
+    "fit",
+    "format",
+    "fm",
+    "q",
+    "quality",
+    "dpr",
+    "auto",
+    "crop",
+    "v",
+    "ver",
+    "version",
+    "id",
+    "export",
+  ]);
+  for (const key of parsed.searchParams.keys()) {
+    if (!publicKeys.has(key.toLowerCase())) return true;
+  }
+  return false;
+}
+
+function safeImageUrl(value) {
+  if (typeof value !== "string") return false;
+  if (!value) return true;
+  if (
+    value.length > 2048 ||
+    value !== value.trim() ||
+    /[\u0000-\u0020\u007f\\]/.test(value) ||
+    !/^https:\/\/[^/?#]/i.test(value)
+  )
+    return false;
+  try {
+    const parsed = new URL(value);
+    return (
+      parsed.protocol === "https:" &&
+      !parsed.username &&
+      !parsed.password &&
+      !parsed.hash &&
+      isPublicImageHost(parsed.hostname) &&
+      !hasPrivateImageQuery(parsed)
+    );
+  } catch {
+    return false;
+  }
+}
+
+function normalizePublicProduct(product) {
+  if (!product || typeof product !== "object") return null;
+  // New optional fields missing from the old six-field JSON remain unregistered.
+  const standardWholesalePriceYen =
+    product.standardWholesalePriceYen === undefined
+      ? null
+      : product.standardWholesalePriceYen;
+  const imageUrl = product.imageUrl === undefined ? "" : product.imageUrl;
+  if (
+    typeof product.name !== "string" ||
+    !product.name.trim() ||
+    typeof product.sku !== "string" ||
+    !product.sku.trim() ||
+    typeof product.brand !== "string" ||
+    typeof product.category !== "string" ||
+    !safePublicUrl(product.materialUrl) ||
+    !safeImageUrl(imageUrl) ||
+    !(
+      product.listPriceYen === null ||
+      (Number.isSafeInteger(product.listPriceYen) && product.listPriceYen >= 0)
+    ) ||
+    !(
+      standardWholesalePriceYen === null ||
+      (Number.isSafeInteger(standardWholesalePriceYen) &&
+        standardWholesalePriceYen >= 0 &&
+        standardWholesalePriceYen <= 2_000_000_000)
+    )
+  )
+    return null;
+  // Retain only public fields even if an invalid upstream adds internal keys.
+  return {
+    sku: product.sku,
+    name: product.name,
+    brand: product.brand,
+    category: product.category,
+    listPriceYen: product.listPriceYen,
+    materialUrl: product.materialUrl,
+    standardWholesalePriceYen,
+    imageUrl,
+  };
+}
+
 function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -67,14 +173,45 @@ function productCard(product, index) {
     element("span", "card-category", product.category || "カテゴリ未登録"),
     element("span", "card-index", String(index + 1).padStart(2, "0"))
   );
+  const media = element("div", "card-media");
+  const imageStatus = element("span", "image-status", "画像未登録");
+  imageStatus.setAttribute("role", "status");
+  if (product.imageUrl) {
+    const image = element("img", "product-image");
+    image.alt = product.name;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.referrerPolicy = "no-referrer";
+    imageStatus.textContent = "画像を読み込み中";
+    image.addEventListener(
+      "load",
+      () => {
+        imageStatus.hidden = true;
+      },
+      { once: true }
+    );
+    image.addEventListener(
+      "error",
+      () => {
+        image.hidden = true;
+        imageStatus.textContent = "画像を読み込めませんでした";
+        imageStatus.hidden = false;
+      },
+      { once: true }
+    );
+    media.append(image, imageStatus);
+    image.src = product.imageUrl;
+  } else {
+    media.append(imageStatus);
+  }
   const brand = element("p", "card-brand", product.brand || "ブランド未登録");
   const title = element("h3", "card-name", product.name);
-  const bottom = element("div", "card-bottom");
-  const sku = element("div", "card-detail");
+  const sku = element("div", "card-detail card-code");
   sku.append(
     element("span", "card-detail-label", "PRODUCT CODE"),
     element("strong", "card-sku", product.sku)
   );
+  const bottom = element("div", "card-bottom");
   const price = element("div", "card-detail card-price");
   price.append(
     element("span", "card-detail-label", "定価"),
@@ -86,7 +223,20 @@ function productCard(product, index) {
         : yen.format(product.listPriceYen)
     )
   );
-  bottom.append(sku, price);
+  const wholesalePrice = product.standardWholesalePriceYen ?? null;
+  const wholesale = element(
+    "div",
+    "card-detail card-price card-wholesale-price"
+  );
+  wholesale.append(
+    element("span", "card-detail-label", "一般卸価格（税抜）"),
+    element(
+      "strong",
+      wholesalePrice === null ? "price-unset" : "price-value",
+      wholesalePrice === null ? "未登録" : yen.format(wholesalePrice)
+    )
+  );
+  bottom.append(price, wholesale);
   const material = product.materialUrl
     ? element("a", "material-link", "商品資料を見る")
     : element("span", "material-link material-unavailable", "資料は未登録");
@@ -102,7 +252,7 @@ function productCard(product, index) {
     arrow.setAttribute("aria-hidden", "true");
     material.append(arrow);
   }
-  card.append(top, brand, title, bottom, material);
+  card.append(top, media, brand, title, sku, bottom, material);
   return card;
 }
 
@@ -140,23 +290,14 @@ async function loadCatalog() {
     if (!response.ok) throw new Error("商品データが取得できません");
     const catalog = await response.json();
     if (
+      !catalog ||
       !Array.isArray(catalog.products) ||
+      ![undefined, 2, 3].includes(catalog.schemaVersion) ||
       !Number.isFinite(Date.parse(catalog.generatedAt))
     ) {
       throw new Error("商品データの形式が正しくありません");
     }
-    products = catalog.products.filter(
-      product =>
-        product &&
-        typeof product.name === "string" &&
-        typeof product.sku === "string" &&
-        typeof product.brand === "string" &&
-        typeof product.category === "string" &&
-        safePublicUrl(product.materialUrl) &&
-        (product.listPriceYen === null ||
-          (Number.isSafeInteger(product.listPriceYen) &&
-            product.listPriceYen >= 0))
-    );
+    products = catalog.products.map(normalizePublicProduct).filter(Boolean);
     elements.total.textContent = String(products.length).padStart(2, "0");
     elements.updated.textContent = `${new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", timeZone: "Asia/Tokyo" }).format(new Date(catalog.generatedAt))} 更新`;
     addOptions(

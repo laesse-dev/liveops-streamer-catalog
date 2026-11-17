@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 2,
-  "generatedAt": "2026-10-02T14:02:24.155Z",
+  "schemaVersion": 3,
+  "generatedAt": "2026-11-17T10:14:44.297Z",
   "products": [
     {
       "sku": "ALICE-BELLE-001",
@@ -8,7 +8,9 @@
       "brand": "ALICE BELLE",
       "category": "スキンケア",
       "listPriceYen": 12000,
-      "materialUrl": "https://drive.google.com/file/d/1KrL5InXBti4rIsxC2IWVgOCivUhAcYTZ/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1KrL5InXBti4rIsxC2IWVgOCivUhAcYTZ/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "ALICE-BELLE-002",
@@ -16,7 +18,9 @@
       "brand": "ALICE BELLE",
       "category": "スキンケア",
       "listPriceYen": 3900,
-      "materialUrl": "https://drive.google.com/file/d/1KrL5InXBti4rIsxC2IWVgOCivUhAcYTZ/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1KrL5InXBti4rIsxC2IWVgOCivUhAcYTZ/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "ALICE-BELLE-003",
@@ -24,7 +28,9 @@
       "brand": "ALICE BELLE",
       "category": "スキンケア",
       "listPriceYen": 11545,
-      "materialUrl": ""
+      "materialUrl": "",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "CHOJU-001",
@@ -32,7 +38,9 @@
       "brand": "choju",
       "category": "健康食品",
       "listPriceYen": 6164,
-      "materialUrl": "https://drive.google.com/file/d/1bu7dPAvIyydL4VfmzmaPE6jmQ_Dniew-/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1bu7dPAvIyydL4VfmzmaPE6jmQ_Dniew-/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "HERKIN-001",
@@ -40,7 +48,9 @@
       "brand": "HERKIN",
       "category": "スキンケア",
       "listPriceYen": 7200,
-      "materialUrl": "https://drive.google.com/file/d/1GFByUTN50g_mCkx9hO-78odW84X-x902/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1GFByUTN50g_mCkx9hO-78odW84X-x902/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "HERKIN-002",
@@ -48,7 +58,9 @@
       "brand": "HERKIN",
       "category": "スキンケア",
       "listPriceYen": null,
-      "materialUrl": "https://drive.google.com/file/d/1iDORuByFz72EYdZHRwKRrg_OntsTUeZd/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1iDORuByFz72EYdZHRwKRrg_OntsTUeZd/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "LIPOCORE-001",
@@ -56,7 +68,9 @@
       "brand": "LipoCore",
       "category": "健康食品",
       "listPriceYen": 8000,
-      "materialUrl": "https://drive.google.com/file/d/1afjmiFrmzvF6J1geqQsIznnfKs1T41a5/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1afjmiFrmzvF6J1geqQsIznnfKs1T41a5/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "METERA-001",
@@ -64,7 +78,9 @@
       "brand": "métera",
       "category": "美容機器",
       "listPriceYen": 21000,
-      "materialUrl": "https://drive.google.com/file/d/1-KyuL61x7L6yPNRlpZjZ1Kqkd9UaPPMc/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1-KyuL61x7L6yPNRlpZjZ1Kqkd9UaPPMc/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "PINK-TONE-001",
@@ -72,7 +88,9 @@
       "brand": "PINK TONE",
       "category": "スキンケア",
       "listPriceYen": 5800,
-      "materialUrl": "https://drive.google.com/file/d/1JiMSpM8IUS-P_sEo_a0mLqOSK0m291ws/view?usp=drivesdk"
+      "materialUrl": "https://drive.google.com/file/d/1JiMSpM8IUS-P_sEo_a0mLqOSK0m291ws/view?usp=drivesdk",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "QUICKTHERA-002",
@@ -80,7 +98,9 @@
       "brand": "QUICKTHERA",
       "category": "スキンケア",
       "listPriceYen": 21900,
-      "materialUrl": "https://drive.google.com/file/d/1YtmXOdVxjXFajErcVIpQ7H__Dtot7e35/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1YtmXOdVxjXFajErcVIpQ7H__Dtot7e35/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "QUICKTHERA-001",
@@ -88,7 +108,9 @@
       "brand": "QUICKTHERA",
       "category": "スキンケア",
       "listPriceYen": 19500,
-      "materialUrl": "https://drive.google.com/file/d/1LFm9efMjPx2F3MYkXoOhUBB-YF-qbTDB/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1LFm9efMjPx2F3MYkXoOhUBB-YF-qbTDB/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     },
     {
       "sku": "ZANGMI-001",
@@ -96,7 +118,9 @@
       "brand": "zangmi",
       "category": "スキンケア",
       "listPriceYen": 9000,
-      "materialUrl": "https://drive.google.com/file/d/1b_1C10kihedCxutPpqgxMMiakLBD-5vg/view?usp=sharing"
+      "materialUrl": "https://drive.google.com/file/d/1b_1C10kihedCxutPpqgxMMiakLBD-5vg/view?usp=sharing",
+      "standardWholesalePriceYen": null,
+      "imageUrl": ""
     }
   ]
 }
